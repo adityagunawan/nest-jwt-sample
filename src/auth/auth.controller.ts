@@ -11,8 +11,8 @@ export class AuthController {
 
   @Post('login')
   @UseGuards(LocalGuard)
-  login(@Req() req: Request) {
-    return req.user;
+  login(@Body() req: AuthPayloadDto) {
+    return this.authService.validateUser(req);
   }
 
   @Get('status')
